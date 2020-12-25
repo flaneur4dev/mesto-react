@@ -3,7 +3,6 @@ import Card from './Card';
 import { api } from '../utils/api';
 
 function Main(props) {
-  // console.log('Main');
 
   const [userName, setUserName] = useState('');
   const [userDescription, setUserDescription] = useState('');
@@ -44,7 +43,7 @@ function Main(props) {
             name="edit-button"
             onClick={props.onEditProfile}
           />
-          <p className="profile__subtitle" data-title>{userDescription}</p>
+          <p className="profile__subtitle">{userDescription}</p>
         </div>
 
         <button

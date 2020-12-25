@@ -2,8 +2,6 @@ import { memo } from 'react';
 import logo from '../images/header/Logo_vector.svg';
 
 function Header() {
-  // console.log('Header');
-
   return (
     <header className="header page__section">
       <a href="#">

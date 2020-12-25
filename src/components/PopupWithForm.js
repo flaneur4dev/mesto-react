@@ -1,8 +1,7 @@
 import { memo } from "react";
 
 function PopupWithForm(props) {
-  // console.log('PopupWithForm');
-
+  
   function handleOverlayClose({ target, currentTarget }) {
     target === currentTarget && props.onClose()
   }

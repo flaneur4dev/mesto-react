@@ -1,8 +1,7 @@
 import { memo } from "react";
 
 function Card({ card, onCardClick }) {
-  // console.log('Card');
-
+  
   function handleClick() {
     onCardClick(card);
   }

@@ -1,8 +1,6 @@
 import { memo, Fragment } from "react";
 
 function FieldSet({ inputsData }) {
-  // console.log('FieldSet');
-
   return (
     <fieldset className="popup__wrapper">
       {inputsData.map(data => (

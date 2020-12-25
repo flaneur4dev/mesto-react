@@ -1,7 +1,6 @@
 import { memo } from "react";
 
 function ImagePopup({ card, onClose }) {
-  // console.log('ImagePopup');
 
   const {isOpen, currentCard} = card;
 
