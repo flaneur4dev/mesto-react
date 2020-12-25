@@ -1,0 +1,31 @@
+.popup__button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+}
+
+.popup__button[disabled] {
+  color: #000;
+  background-color: transparent;
+  border: 1px solid #000;
+  opacity: .2;
+  cursor: default;
+}
+
+@media screen and (min-width: 768px) {
+  .popup__button {
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  .popup__button:not([disabled]):hover {
+    opacity: .8;
+  }
+}

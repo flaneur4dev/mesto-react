@@ -1,0 +1,11 @@
+.dot_loader {
+  margin-left: 40px;
+}
+
+.dot_loader::before {
+  right: 40px;
+}
+
+.dot_loader::after {
+  right: 20px;
+}

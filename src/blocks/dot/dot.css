@@ -1,0 +1,29 @@
+.dot {
+  margin-left: 7px;
+	position: relative;
+	animation: pulse .7s ease-in-out .4s infinite alternate;
+
+}
+
+.dot::before {
+  content: '.';
+  position: absolute;
+  right: 10px;
+	animation: pulse .7s ease-in-out infinite alternate;
+}
+
+.dot::after {
+  content: '.';
+  position: absolute;
+  right: 5px;
+	animation: pulse .7s ease-in-out .3s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

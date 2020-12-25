@@ -1,0 +1,24 @@
+.popup__input {
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 8px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  box-sizing: border-box;
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 1.2;
+  /* outline: none; */
+}
+
+.popup__input:last-child {
+  margin-bottom: 0;
+}
+
+.popup__input:focus {
+  outline-color: #3df;
+}
+
+.popup__input:invalid:not(:placeholder-shown) {
+  border-bottom-color: #f00;
+}

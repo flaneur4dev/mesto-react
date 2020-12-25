@@ -1,0 +1,30 @@
+.element__image {
+  width: 100%;
+  height: calc((88vw - 36px)/3);
+  object-fit: cover;
+  object-position: top;
+}
+
+@media screen and (max-width: 720px) {
+  .element__image {
+    height: calc((88vw - 18px)/2);
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .element__image {
+    height: 88vw;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .element__image {
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .element__image {
+    max-height: 282px;
+  }
+}

@@ -1,0 +1,6 @@
+.element__button_type_like-button {
+  min-width: 20px;
+  height: 20px;
+  margin-bottom: 10px;
+  background-image: url(../../../../images/elements/like_button.svg);
+}

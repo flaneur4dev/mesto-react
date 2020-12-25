@@ -1,0 +1,19 @@
+.profile__button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: solid #fff;
+  outline: none;
+  transition: .3s;
+}
+
+@media screen and (min-width: 768px) {
+  .profile__button:hover {
+    opacity: .6;
+    cursor: pointer;
+  }
+}
