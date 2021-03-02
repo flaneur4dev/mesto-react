@@ -1,8 +1,16 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 
 function ImagePopup({ card, onClose }) {
+  const { isOpen, currentCard } = card;
 
-  const {isOpen, currentCard} = card;
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEscapeClose = event => event.key === "Escape" && onClose();
+    document.addEventListener("keydown", handleEscapeClose);
+
+    return () => document.removeEventListener("keydown", handleEscapeClose);
+  }, [isOpen])
 
   function handleOverlayClose({ target, currentTarget }) {
     target === currentTarget && onClose()

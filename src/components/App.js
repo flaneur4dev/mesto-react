@@ -62,36 +62,36 @@ function App() {
     setSaveButtonTitle('Сохранение <span class ="dot">.</span>')
 
     api.updateUserData(newUser)
-      .then(data => setCurrentUser(data))
-      .catch(err => alert(err))
-      .finally(() => {
-        setSaveButtonTitle(defaultSubmitTitle.save)
+      .then(data => {
+        setCurrentUser(data)
         closeAllPopups()
       })
+      .catch(err => alert(err))
+      .finally(() => setSaveButtonTitle(defaultSubmitTitle.save))
   }
 
   function handleUpdateAvatar(newAvatar) {
     setSaveButtonTitle('Сохранение <span class ="dot">.</span>')
 
     api.updateAvatar(newAvatar)
-      .then(data => setCurrentUser(prevState => ({ ...prevState, avatar: data.avatar })))
-      .catch(err => alert(err))
-      .finally(() => {
-        setSaveButtonTitle(defaultSubmitTitle.save)
+      .then(data => {
+        setCurrentUser(prevState => ({ ...prevState, avatar: data.avatar }))
         closeAllPopups()
       })
+      .catch(err => alert(err))
+      .finally(() => setSaveButtonTitle(defaultSubmitTitle.save))
   }
 
   function handleAddPlaceSubmit(newCard) {
     setAddButtonTitle('Добавление <span class ="dot">.</span>')
 
     api.addCard(newCard)
-      .then(card => setCards([ card, ...cards ]))
-      .catch(err => alert(err))
-      .finally(() => {
-        setAddButtonTitle(defaultSubmitTitle.add)
+      .then(card => {
+        setCards([ card, ...cards ])
         closeAllPopups()
       })
+      .catch(err => alert(err))
+      .finally(() => setAddButtonTitle(defaultSubmitTitle.add))
   }
 
   const idRef = useRef();
@@ -105,12 +105,10 @@ function App() {
       .then(() => {
         const newCards = cards.filter(item => item._id !== idRef.current);
         setCards(newCards)
-      })
-      .catch(err => alert(err))
-      .finally(() => {
-        setConfirmButtonTitle(defaultSubmitTitle.confirm)
         closeAllPopups()
       })
+      .catch(err => alert(err))
+      .finally(() => setConfirmButtonTitle(defaultSubmitTitle.confirm))
   }
 
   function handleCardLike(cardId, isLiked) {
@@ -118,8 +116,7 @@ function App() {
       api.deleteLike(cardId)
         .then(card => {
           if (card.likes.some(item => item._id !== currentUser._id) || !card.likes.length) {
-            const newCards = cards.map(item => item._id === cardId ? card : item);
-            setCards(newCards)
+            setCards(prevState => prevState.map(item => item._id === cardId ? card : item))
           }
         })
         .catch(err => alert(err))
@@ -127,51 +124,35 @@ function App() {
       api.addLike(cardId)
         .then(card => {
           if (card.likes.some(item => item._id === currentUser._id)) {
-            const newCards = cards.map(item => item._id === cardId ? card : item);
-            setCards(newCards)
+            setCards(prevState => prevState.map(item => item._id === cardId ? card : item))
           }
         })
         .catch(err => alert(err))
     }
   }
 
-  function handleEscClose({ key }) {
-    key === 'Escape' && closeAllPopups()
-  }
-
-  function addListener() {
-    document.onkeydown = handleEscClose;
-  }
-
   function handleAddPlaceClick() {
-    addListener();
     setIsAddPlacePopupOpen(true)
   }
 
   function handleEditProfileClick() {
-    addListener();
     setIsEditProfilePopupOpen(true);
   }
 
   function handleEditAvatarClick() {
-    addListener();
     setIsEditAvatarPopupOpen(true)
   }
 
   function handleCardClick(card) {
-    addListener();
     setSelectedCard({ isOpen: true, currentCard: card })
   }
   
   function handleConfirmClick(cardId) {
     idRef.current = cardId;
-    addListener();
     setIsConfirmPopupOpen(true)
   }
   
   function closeAllPopups() {
-    document.onkeydown = '';
-
     setIsSubmitDisabled(defaultSubmitButtons);
     setValidationMessage(defaultValidationMessage);
     inputsRef.current.forEach(input => input.setCustomValidity(''));

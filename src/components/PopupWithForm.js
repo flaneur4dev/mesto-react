@@ -1,6 +1,14 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 
 function PopupWithForm(props) {
+  useEffect(() => {
+    if (!props.isOpen) return;
+    
+    const handleEscapeClose = event => event.key === "Escape" && props.onClose();
+    document.addEventListener("keydown", handleEscapeClose);
+
+    return () => document.removeEventListener("keydown", handleEscapeClose);
+  }, [props.isOpen])
   
   function handleOverlayClose({ target, currentTarget }) {
     target === currentTarget && props.onClose()
